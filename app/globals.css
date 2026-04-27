@@ -824,8 +824,8 @@ body {
   align-items: center;
   justify-content: center;
   font-family: 'Hero New', Arial, Helvetica, sans-serif;
-  font-size: 13px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 350;
   letter-spacing: 0.08em;
   color: var(--black);
   padding: 0 10px;
