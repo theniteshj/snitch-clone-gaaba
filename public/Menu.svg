@@ -1,1 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 25" fill="none"><line y1="5" x2="24" y2="5" stroke="black"/><line y1="13" x2="24" y2="13" stroke="#E16E50"/><line y1="21" x2="24" y2="21" stroke="black"/></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;">
+    <g transform="matrix(0.96,0,0,0.96,0.48,0)">
+        <path d="M0,5L24,5" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+    </g>
+    <g transform="matrix(0.96,0,0,0.96,0.48,0)">
+        <path d="M0,13L24,13" style="fill:none;fill-rule:nonzero;stroke:rgb(65,105,225);stroke-width:1px;"/>
+    </g>
+    <g transform="matrix(0.96,0,0,0.96,0.48,0)">
+        <path d="M0,21L24,21" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+    </g>
+</svg>

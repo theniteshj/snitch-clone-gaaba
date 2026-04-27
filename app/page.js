@@ -5,4 +5,3 @@ export default function page() {
     <div className='flex items-center justify-center min-h-screen font-extrabold text-6xl'>Home</div>
   )
 }
-
