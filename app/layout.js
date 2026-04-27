@@ -15,8 +15,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <PincodeBar />
         <Header />
+        <PincodeBar />
         {children}
         <BottomNav />
       </body>
