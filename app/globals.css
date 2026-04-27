@@ -825,20 +825,25 @@ body {
   justify-content: center;
   font-family: 'Hero New', Arial, Helvetica, sans-serif;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.08em;
   color: var(--black);
   padding: 0 10px;
   height: 28px;
   border-radius: 6px;
   background: transparent;
-  border: 1.5px solid transparent;
-  transition: border-color 0.18s ease, font-weight 0.1s ease;
+  border: none;
+  outline: none;
+  transition: font-weight 0.1s ease;
 }
 
-/* Active — bold text + black border box outline */
+/* Remove focus ring on click (keyboard users still get :focus-visible) */
+.bottom-nav__item--new:focus {
+  outline: none;
+}
+
+/* Active — clearly bold, no border */
 .bottom-nav__new-pill--active {
-  border-color: var(--black);
   font-weight: 800;
 }
 
