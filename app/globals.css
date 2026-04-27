@@ -1,0 +1,1345 @@
+@import "tailwindcss";
+
+/* ─── Hero New Custom Fonts ───────────────────────────────── */
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New Hairline.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New Hairline Italic.otf') format('opentype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New UltraLight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New UltraLight Italic.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New Thin.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New Thin Italic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New Light.otf') format('opentype');
+  font-weight: 350;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New Light Italic.otf') format('opentype');
+  font-weight: 350;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New Regular Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New Medium Italic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New SemiBold Italic.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New Bold Italic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New ExtraBold Italic.otf') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New Super.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Hero New';
+  src: url('/Font/Hero New Super Italic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ─── Tokens ─────────────────────────────────────────────── */
+:root {
+  --white: #ffffff;
+  --black: #1a1a1a;
+  --border: #d4d4d4;
+  --placeholder: #1a1a1a;
+  --icon-hover: #f5f5f5;
+  --header-height: 52px;
+  --pincode-bar-height: 28px;
+}
+
+/* ─── Reset ───────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Base ────────────────────────────────────────────────── */
+html,
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Hero New', Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  /* clearance for fixed bottom nav on mobile */
+  padding-bottom: 60px;
+}
+
+@media (min-width: 640px) {
+  body {
+    padding-bottom: 0;
+  }
+}
+
+/* ─── Header ──────────────────────────────────────────────── */
+
+.header {
+  position: sticky;
+  top: var(--pincode-bar-height); /* below pincode bar on mobile */
+  z-index: 100;
+  width: 100%;
+  height: var(--header-height);
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+
+
+  /* Mobile layout: row, hamburger + search side by side */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+}
+
+/* Desktop: header back to top:0 (pincode bar is static, above in flow) */
+@media (min-width: 768px) {
+  .header {
+    top: 0;
+  }
+}
+
+/* Desktop: 3-column grid */
+@media (min-width: 640px) {
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    padding-right: 24px;
+    padding-left: 0;
+    padding-top: 2px;
+    padding-bottom: 5px;
+  }
+}
+
+/* Left */
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+/* Center — logo, hidden on mobile */
+.header-center {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .header-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Right — hidden on mobile */
+.header-right {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+}
+
+/* ─── Logo ────────────────────────────────────────────────── */
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.logo-link:hover {
+  opacity: 0.7;
+}
+
+.logo-img {
+  display: block;
+  /* next.svg is dark, keep it dark on white bg */
+  filter: none;
+}
+
+/* ─── Search Bar ──────────────────────────────────────────── */
+
+/* Shared base */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 10px;
+  background: var(--white);
+  border: 1px solid var(--black);
+  border-radius: 0px;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.search-bar:focus-within {
+  border-color: var(--black);
+  box-shadow: 0 0 0 1px var(--black);
+}
+
+/* Mobile search: fills remaining space */
+.search-bar--mobile {
+  flex: 1;
+}
+
+/* Desktop search: fixed width, only visible on ≥640px */
+.search-bar--desktop {
+  display: none;
+  width: 210px;
+  transition: width 0.22s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.search-bar--desktop:focus-within {
+  width: 240px;
+}
+
+@media (min-width: 640px) {
+  .search-bar--mobile {
+    display: none;
+  }
+
+  .search-bar--desktop {
+    display: flex;
+  }
+}
+
+.search-icon {
+  flex-shrink: 0;
+  opacity: 0.55;
+  width: 15px;
+  height: 15px;
+}
+
+/* Wrapper that stacks the real input and animated placeholder */
+.search-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* The real <input> — transparent text only, sits on top */
+.search-input--real {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 12px;
+  color: var(--black);
+  letter-spacing: 0.02em;
+  z-index: 1;
+  caret-color: var(--black);
+}
+
+.search-input--real::placeholder {
+  color: transparent;
+  /* hide native placeholder */
+}
+
+/* Animated placeholder text */
+.search-placeholder-animated {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  color: var(--placeholder);
+  font-size: 11px;
+  font-weight: 350;
+  letter-spacing: 0.04em;
+  /* Slide-up + fade animation */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 0;
+}
+
+
+/* ─── Icon Buttons ────────────────────────────────────────── */
+
+.icon-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.icon-btn:hover {
+  background: var(--icon-hover);
+}
+
+.icon-btn:active {
+  transform: scale(0.92);
+}
+
+/* ─── Cart Badge ──────────────────────────────────────────── */
+
+.cart-btn {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  border-radius: 999px;
+  background: var(--black);
+  color: var(--white);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 14px;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* ─── Pincode Bar strip ───────────────────────────────────── */
+
+.pincode-bar {
+  width: 100%;
+  background: linear-gradient(90deg, rgb(245, 245, 245) 0%, rgba(245, 245, 245, 0) 100%);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 16px;
+  /* Mobile: sticky above header */
+  position: sticky;
+  top: 0;
+  z-index: 101;
+}
+
+@media (min-width: 768px) {
+  .pincode-bar {
+    /* Desktop: static in flow, below header naturally */
+    position: static;
+    padding: 6px 24px;
+    margin-top: 0;
+  }
+}
+
+.pincode-bar__inner {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+  gap: 4px;
+}
+
+.pincode-bar__prompt {
+  font-family: 'Hero New', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--black);
+  white-space: nowrap;
+}
+
+.pincode-bar__link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: 'Hero New', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--black);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+.pincode-bar__link:hover { opacity: 0.6; }
+
+/* ─── Overlay ────────────────────────────────────────────── */
+
+.pincode-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 290;
+}
+
+/* ─── Panel — mobile: bottom sheet / desktop: modal ─────── */
+
+/* BASE — mobile bottom sheet (hidden: pushed off screen) */
+.pincode-panel {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  max-height: min(624px, calc(100% - env(safe-area-inset-top, 0px) - 34px));
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px -2px 16px;
+  display: flex;
+  flex-direction: column;
+  z-index: 300;
+  /* hidden below viewport */
+  transform: translateY(100%);
+  transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+  pointer-events: none;
+}
+
+.pincode-panel--open {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Desktop: centered modal */
+@media (min-width: 768px) {
+  .pincode-panel {
+    left: 50%;
+    bottom: auto;
+    top: 50%;
+    transform: translate(-50%, -40%);
+    opacity: 0;
+    width: 520px;
+    max-height: 90vh;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+    border-radius: 2px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .pincode-panel--open {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* ── Drag handle (mobile only) ── */
+.pincode-panel__handle-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+  width: 100%;
+}
+
+.pincode-panel__handle {
+  width: 48px;
+  height: 6px;
+  background: var(--black);
+  border-radius: 999px;
+}
+
+@media (min-width: 768px) {
+  .pincode-panel__handle-wrap {
+    display: none;
+  }
+}
+
+/* ── Scrollable content area ── */
+.pincode-panel__scroll {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  /* hide scrollbar */
+  scrollbar-width: none;
+}
+.pincode-panel__scroll::-webkit-scrollbar { display: none; }
+
+.pincode-panel__content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .pincode-panel__content {
+    padding: 20px 20px 24px;
+    margin-top: 8px;
+  }
+}
+
+/* ── Location banner ── */
+.pincode-location-banner {
+  width: 100%;
+  height: 80px;
+  background: #F7EEE8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.pincode-location-banner__left {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  max-width: calc(100% - 100px);
+}
+
+.pincode-location-banner__icon {
+  flex-shrink: 0;
+}
+
+.pincode-location-banner__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.pincode-location-banner__heading {
+  font-family: 'Hero New', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--black);
+  text-transform: uppercase;
+}
+
+.pincode-location-banner__sub {
+  font-family: 'Hero New', Arial, sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: var(--black);
+}
+
+.pincode-location-banner__btn {
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 8px 12px;
+  font-family: 'Hero New', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  white-space: nowrap;
+  align-self: center;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.pincode-location-banner__btn:hover { opacity: 0.8; }
+
+/* ── OR divider ── */
+.pincode-or {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.pincode-or__text {
+  font-family: 'Hero New', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--black);
+  flex-shrink: 0;
+}
+
+.pincode-or__line {
+  display: flex;
+  align-items: center;
+}
+
+/* ── Label ── */
+.pincode-panel__label {
+  font-family: 'Hero New', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--black);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* ── Input row ── */
+.pincode-panel__input-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background: var(--white);
+  border: 1px solid #d4d4d4;
+  margin-bottom: 12px;
+}
+
+.pincode-panel__input {
+  flex: 1;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0 8px 0 14px;
+  font-family: 'Hero New', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--black);
+}
+
+.pincode-panel__apply {
+  padding: 4px 16px;
+  background: none;
+  border: none;
+  font-family: 'Hero New', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--black);
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.pincode-panel__apply:hover { background: #f0f0f0; }
+.pincode-panel__apply:disabled { opacity: 0.4; cursor: default; }
+.pincode-panel__apply:disabled:hover { background: none; }
+
+/* ── Close ✕ (desktop only) ── */
+.pincode-panel__close {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .pincode-panel__close {
+    display: flex;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.15s;
+  }
+  .pincode-panel__close:hover { opacity: 0.6; }
+}
+
+/* ─── Mobile Bottom Nav ───────────────────────────────────── */
+
+.bottom-nav {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  height: 60px;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  /* safe-area for notched phones */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Hide on desktop */
+@media (min-width: 640px) {
+  .bottom-nav {
+    display: none;
+  }
+}
+
+/* Each tab */
+.bottom-nav__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  text-decoration: none;
+  color: var(--black);
+  font-family: 'Hero New', Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  padding: 6px 0 4px;
+  transition: opacity 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bottom-nav__item:active {
+  opacity: 0.6;
+}
+
+/* Icon wrapper */
+.bottom-nav__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 28px;
+  border-radius: 8px;
+  background: transparent;
+  transition: background 0.18s ease;
+}
+
+/* Active state — rounded chip box behind icon */
+.bottom-nav__item--active .bottom-nav__icon {
+  background: #ebebeb;
+}
+
+/* Active label bold */
+.bottom-nav__item--active .bottom-nav__label {
+  font-weight: 600;
+}
+
+/* ── NEW centre pill ── */
+.bottom-nav__item--new {
+  flex: 1;
+  justify-content: center;
+}
+
+.bottom-nav__new-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Hero New', Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--black);
+  padding: 0 10px;
+  height: 28px;
+  border-radius: 6px;
+  background: transparent;
+  border: 1.5px solid transparent;
+  transition: border-color 0.18s ease, font-weight 0.1s ease;
+}
+
+/* Active — bold text + black border box outline */
+.bottom-nav__new-pill--active {
+  border-color: var(--black);
+  font-weight: 800;
+}
+
+/* press feedback */
+.bottom-nav__item--new:active .bottom-nav__new-pill {
+  opacity: 0.6;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PAGE STYLES
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Shared page wrapper ── */
+.explore-page,
+.new-page,
+.cart-page,
+.profile-page {
+  min-height: 100svh;
+  font-family: 'Hero New', Arial, Helvetica, sans-serif;
+  color: var(--black);
+}
+
+/* ─── EXPLORE ─────────────────────────────────────────────── */
+
+.explore-header {
+  padding: 24px 16px 8px;
+}
+
+.explore-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.explore-sub {
+  font-size: 12px;
+  font-weight: 350;
+  letter-spacing: 0.06em;
+  color: #888;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+.explore-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 16px 20px;
+  padding: 0 12px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.explore-search__placeholder {
+  font-size: 13px;
+  font-weight: 350;
+}
+
+.explore-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 0 16px;
+}
+
+.explore-card {
+  position: relative;
+  border-radius: 10px;
+  height: 110px;
+  display: flex;
+  align-items: flex-end;
+  padding: 12px;
+  cursor: pointer;
+  transition: transform 0.18s ease;
+}
+
+.explore-card:active {
+  transform: scale(0.97);
+}
+
+.explore-card__tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
+  background: var(--black);
+  color: var(--white);
+  border-radius: 4px;
+}
+
+.explore-card__label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.explore-trending {
+  padding: 24px 16px 8px;
+}
+
+.explore-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+
+.explore-trending__scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+
+.explore-trending__scroll::-webkit-scrollbar { display: none; }
+
+.explore-trend-tag {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.explore-trend-tag:active {
+  background: #f0f0f0;
+}
+
+/* ─── NEW ARRIVALS ────────────────────────────────────────── */
+
+.new-hero {
+  padding: 32px 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.new-hero__eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.new-hero__title {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.new-hero__sub {
+  font-size: 12px;
+  font-weight: 350;
+  color: #888;
+  margin-top: 6px;
+  letter-spacing: 0.04em;
+}
+
+.new-filters {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 14px 16px;
+}
+
+.new-filters::-webkit-scrollbar { display: none; }
+
+.new-filter-btn {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  font-family: 'Hero New', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.new-filter-btn--active {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+  font-weight: 600;
+}
+
+.new-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 0 16px 16px;
+}
+
+.new-card {
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.18s ease;
+  position: relative;
+}
+
+.new-card:active {
+  transform: scale(0.97);
+}
+
+.new-card__label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 2px 6px;
+  background: var(--black);
+  color: var(--white);
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.new-card__img-area {
+  width: 100%;
+  height: 160px;
+  background: rgba(0,0,0,0.06);
+}
+
+.new-card__info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.new-card__name {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.new-card__price {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ─── CART ────────────────────────────────────────────────── */
+
+.cart-header {
+  padding: 24px 16px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.cart-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.cart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 24px 32px;
+  gap: 8px;
+  text-align: center;
+}
+
+.cart-empty__icon {
+  margin-bottom: 8px;
+  opacity: 0.4;
+}
+
+.cart-empty__heading {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.cart-empty__sub {
+  font-size: 13px;
+  font-weight: 350;
+  color: #888;
+}
+
+.cart-cta {
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 28px;
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Hero New', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: opacity 0.15s;
+}
+
+.cart-cta:active { opacity: 0.75; }
+
+.cart-summary {
+  margin: 0 16px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.cart-summary__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 6px 0;
+}
+
+.cart-summary__row--total {
+  font-size: 15px;
+  font-weight: 800;
+  border-top: 1px solid var(--border);
+  margin-top: 6px;
+  padding-top: 12px;
+}
+
+.cart-checkout-btn {
+  margin-top: 14px;
+  width: 100%;
+  padding: 14px;
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Hero New', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.35;
+  transition: opacity 0.15s;
+}
+
+.cart-checkout-btn:not(:disabled) {
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* ─── PROFILE ─────────────────────────────────────────────── */
+
+.profile-hero {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 24px 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--black);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.profile-name {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.profile-login-link {
+  font-size: 12px;
+  font-weight: 400;
+  color: #888;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.profile-login-link:active { opacity: 0.6; }
+
+.profile-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.profile-stat__val {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.profile-stat__lbl {
+  font-size: 11px;
+  font-weight: 350;
+  color: #888;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.profile-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+}
+
+.profile-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: var(--black);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.12s;
+}
+
+.profile-menu__item:active {
+  background: #f5f5f5;
+}
+
+.profile-menu__icon {
+  font-size: 20px;
+  width: 26px;
+  text-align: center;
+}
+
+.profile-menu__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.profile-menu__label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.profile-menu__sub {
+  font-size: 11px;
+  font-weight: 350;
+  color: #888;
+}
+
+.profile-menu__arrow {
+  font-size: 20px;
+  color: #ccc;
+  font-weight: 300;
+}
+
+.profile-logout {
+  display: block;
+  width: calc(100% - 32px);
+  margin: 20px 16px;
+  padding: 13px;
+  border: 1.5px solid var(--black);
+  border-radius: 6px;
+  background: transparent;
+  font-family: 'Hero New', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.profile-logout:active {
+  background: var(--black);
+  color: var(--white);
+}
