@@ -203,7 +203,7 @@ body {
 
 .header {
   position: sticky;
-  top: var(--pincode-bar-height); /* below pincode bar on mobile */
+  top: 0; /* mobile: pincode bar is fixed so header stacks from 0 */
   z-index: 100;
   width: 100%;
   height: var(--header-height);
@@ -450,18 +450,11 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 6px 16px;
-  /* Mobile: sticky above header */
-  position: sticky;
-  top: 0;
-  z-index: 101;
 }
 
 @media (min-width: 768px) {
   .pincode-bar {
-    /* Desktop: static in flow, below header naturally */
-    position: static;
     padding: 6px 24px;
-    margin-top: 0;
   }
 }
 
