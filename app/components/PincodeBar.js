@@ -22,7 +22,7 @@ export default function PincodeBar() {
       {/* ── Bar Strip ── */}
       <div className="pincode-bar">
         <div className="pincode-bar__inner">
-          <span className="pincode-bar__prompt">Enter Pincode -&nbsp;</span>
+          <span className="pincode-bar__prompt">Deliver to:&nbsp;</span>
           <button
             className="pincode-bar__link"
             onClick={() => setOpen(true)}
