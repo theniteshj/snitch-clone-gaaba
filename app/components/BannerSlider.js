@@ -4,11 +4,11 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 
 const BANNERS = [
-  "/media/banner/1774010458.webp",
-  "/media/banner/1775472623.webp",
-  "/media/banner/1775472640.webp",
-  "/media/banner/1775472686.webp",
-  "/media/banner/1776491438.webp",
+  "/Media/Banner/1774010458.webp",
+  "/Media/Banner/1775472623.webp",
+  "/Media/Banner/1775472640.webp",
+  "/Media/Banner/1775472686.webp",
+  "/Media/Banner/1776491438.webp",
 ];
 
 const TOTAL = BANNERS.length;
@@ -143,8 +143,9 @@ export default function BannerSlider() {
               src={src}
               alt={`Banner ${i}`}
               fill
+              unoptimized
               priority={i <= 1}
-              sizes="(min-width: 640px) 40vw, 100vw"
+              sizes="(min-width: 640px) 508px, 100vw"
               style={{ objectFit: "cover" }}
             />
             <div className="banner-slider__grad banner-slider__grad--top" />

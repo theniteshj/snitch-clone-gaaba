@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
   reactCompiler: true,
+  images: {
+    unoptimized: true, // static deployment ke liye — direct file URLs
+  },
 };
 
 export default nextConfig;
