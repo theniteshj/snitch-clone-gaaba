@@ -1,8 +1,15 @@
 import React from 'react'
+import PincodeBar from './components/PincodeBar'
+import CategoryNav from './components/CategoryNav'
+import BannerSlider from './components/BannerSlider'
 
-export default function page() {
+export default function HomePage() {
   return (
-    <div className='flex items-center justify-center min-h-screen font-extrabold text-6xl'>Home</div>
+    <>
+      <PincodeBar />
+      <CategoryNav />
+      <BannerSlider />
+      <div className='flex items-center justify-center min-h-screen font-extrabold text-6xl'>Home</div>
+    </>
   )
 }
-
