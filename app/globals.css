@@ -169,8 +169,11 @@
   --border: #d4d4d4;
   --placeholder: #1a1a1a;
   --icon-hover: #f5f5f5;
+  --accent: #e63030;
+  /* active category underline red */
   --header-height: 52px;
-  --pincode-bar-height: 28px;
+  --pincode-bar-height: 40px;
+  --mobile-top-offset: calc(var(--header-height) + var(--pincode-bar-height));
 }
 
 /* ─── Reset ───────────────────────────────────────────────── */
@@ -189,7 +192,7 @@ body {
   color: var(--black);
   font-family: 'Hero New', Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
-  /* clearance for fixed bottom nav on mobile */
+  /* mobile: fixed bottom nav ke liye */
   padding-bottom: 60px;
 }
 
@@ -199,35 +202,29 @@ body {
   }
 }
 
+
 /* ─── Header ──────────────────────────────────────────────── */
 
 .header {
-  position: sticky;
-  top: 0; /* mobile: pincode bar is fixed so header stacks from 0 */
-  z-index: 100;
+  /* Mobile: normal flow — page ke saath scroll hoga */
   width: 100%;
   height: var(--header-height);
   background: var(--white);
   border-bottom: 1px solid var(--border);
 
-
-  /* Mobile layout: row, hamburger + search side by side */
+  /* Mobile layout: hamburger + search side by side */
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 0 12px;
 }
 
-/* Desktop: header back to top:0 (pincode bar is static, above in flow) */
-@media (min-width: 768px) {
-  .header {
-    top: 0;
-  }
-}
-
-/* Desktop: 3-column grid */
+/* Desktop only: sticky + 3-col grid */
 @media (min-width: 640px) {
   .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     gap: 0;
@@ -443,6 +440,7 @@ body {
 /* ─── Pincode Bar strip ───────────────────────────────────── */
 
 .pincode-bar {
+  /* Mobile + Desktop: normal flow — page ke saath scroll hoga */
   width: 100%;
   background: linear-gradient(90deg, rgb(245, 245, 245) 0%, rgba(245, 245, 245, 0) 100%);
   cursor: pointer;
@@ -452,7 +450,7 @@ body {
   padding: 6px 16px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .pincode-bar {
     padding: 6px 24px;
   }
@@ -461,7 +459,7 @@ body {
 .pincode-bar__inner {
   display: flex;
   align-items: center;
-  margin-top: 4px;
+  margin-top: 0;
   gap: 4px;
 }
 
@@ -487,9 +485,202 @@ body {
   white-space: nowrap;
   transition: opacity 0.15s;
 }
-.pincode-bar__link:hover { opacity: 0.6; }
+
+.pincode-bar__link:hover {
+  opacity: 0.6;
+}
+
+/* ─── Category Nav ────────────────────────────────────────── */
+
+.category-nav {
+  width: 100%;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+
+.category-nav__track {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0 4px;
+}
+
+.category-nav__track::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .category-nav__track {
+    padding: 0 16px;
+  }
+}
+
+.category-nav__item {
+  flex: 1;
+  min-width: max-content;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  /* margin-bottom: -1px aligns the active border with nav border-bottom */
+  margin-bottom: -1px;
+  padding: 9px 12px 7px;
+  font-family: 'Hero New', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--black);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .category-nav__item {
+    font-size: 14px;
+    padding: 10px 16px 8px;
+    border-bottom-width: 3px;
+  }
+}
+
+.category-nav__item:hover {
+  opacity: 0.65;
+}
+
+.category-nav__item--active {
+  border-bottom-color: var(--accent);
+  /* RED underline */
+  font-weight: 500;
+}
+
+/* ─── Banner Slider ───────────────────────────────────────── */
+
+.banner-slider {
+  position: relative;
+  width: 100%;
+  height: 480px;          /* mobile */
+  overflow: hidden;
+  background: var(--white);
+}
+
+@media (min-width: 768px) {
+  .banner-slider {
+    height: 750px;        /* desktop: 508x750 reference size */
+    max-height: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .banner-slider {
+    height: 750px;
+  }
+}
+
+/* ── Track — horizontal flex, moves via JS translateX ── */
+.banner-slider__track {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  gap: 0;                  /* mobile: no gap — one full-width slide at a time */
+  will-change: transform;
+}
+
+@media (min-width: 640px) {
+  .banner-slider__track {
+    gap: 8px;              /* desktop: 8px gap between slides */
+  }
+}
+
+/* ── Mobile slide — full width ── */
+.banner-slider__slide--mobile {
+  flex: 0 0 100%;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Desktop slide — fixed 508px width, centered peek ── */
+.banner-slider__slide--desktop {
+  flex: 0 0 508px;          /* exact 508px reference width */
+  width: 508px;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+
+/* ── Gradients (shared) ── */
+.banner-slider__grad {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 200px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.banner-slider__grad--top {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, transparent 100%);
+}
+
+.banner-slider__grad--bottom {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.40) 0%, transparent 100%);
+}
+
+/* ── Progress dots ── */
+.banner-slider__dots {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.banner-slider__dot-wrap {
+  background: none;
+  border: none;
+  padding: 4px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Inactive — small circle */
+.banner-slider__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* Active — wide pill with animated fill */
+.banner-slider__dot--active {
+  width: 40px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+}
+
+.banner-slider__dot-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: #fff;
+  transition: width 75ms linear;
+}
 
 /* ─── Overlay ────────────────────────────────────────────── */
+
+
 
 .pincode-overlay {
   position: fixed;
@@ -533,7 +724,7 @@ body {
     opacity: 0;
     width: 520px;
     max-height: 90vh;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
     border-radius: 2px;
     transition: opacity 0.2s ease, transform 0.2s ease;
   }
@@ -575,7 +766,10 @@ body {
   /* hide scrollbar */
   scrollbar-width: none;
 }
-.pincode-panel__scroll::-webkit-scrollbar { display: none; }
+
+.pincode-panel__scroll::-webkit-scrollbar {
+  display: none;
+}
 
 .pincode-panel__content {
   padding: 16px;
@@ -645,7 +839,10 @@ body {
   cursor: pointer;
   transition: opacity 0.15s;
 }
-.pincode-location-banner__btn:hover { opacity: 0.8; }
+
+.pincode-location-banner__btn:hover {
+  opacity: 0.8;
+}
 
 /* ── OR divider ── */
 .pincode-or {
@@ -717,9 +914,19 @@ body {
   white-space: nowrap;
   transition: background 0.15s;
 }
-.pincode-panel__apply:hover { background: #f0f0f0; }
-.pincode-panel__apply:disabled { opacity: 0.4; cursor: default; }
-.pincode-panel__apply:disabled:hover { background: none; }
+
+.pincode-panel__apply:hover {
+  background: #f0f0f0;
+}
+
+.pincode-panel__apply:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.pincode-panel__apply:disabled:hover {
+  background: none;
+}
 
 /* ── Close ✕ (desktop only) ── */
 .pincode-panel__close {
@@ -740,7 +947,10 @@ body {
     justify-content: center;
     transition: opacity 0.15s;
   }
-  .pincode-panel__close:hover { opacity: 0.6; }
+
+  .pincode-panel__close:hover {
+    opacity: 0.6;
+  }
 }
 
 /* ─── Mobile Bottom Nav ───────────────────────────────────── */
@@ -966,7 +1176,9 @@ body {
   padding-bottom: 4px;
 }
 
-.explore-trending__scroll::-webkit-scrollbar { display: none; }
+.explore-trending__scroll::-webkit-scrollbar {
+  display: none;
+}
 
 .explore-trend-tag {
   flex-shrink: 0;
@@ -1024,7 +1236,9 @@ body {
   padding: 14px 16px;
 }
 
-.new-filters::-webkit-scrollbar { display: none; }
+.new-filters::-webkit-scrollbar {
+  display: none;
+}
 
 .new-filter-btn {
   flex-shrink: 0;
@@ -1082,7 +1296,7 @@ body {
 .new-card__img-area {
   width: 100%;
   height: 160px;
-  background: rgba(0,0,0,0.06);
+  background: rgba(0, 0, 0, 0.06);
 }
 
 .new-card__info {
@@ -1157,7 +1371,9 @@ body {
   transition: opacity 0.15s;
 }
 
-.cart-cta:active { opacity: 0.75; }
+.cart-cta:active {
+  opacity: 0.75;
+}
 
 .cart-summary {
   margin: 0 16px;
@@ -1241,7 +1457,9 @@ body {
   letter-spacing: 0.02em;
 }
 
-.profile-login-link:active { opacity: 0.6; }
+.profile-login-link:active {
+  opacity: 0.6;
+}
 
 .profile-stats {
   display: flex;
