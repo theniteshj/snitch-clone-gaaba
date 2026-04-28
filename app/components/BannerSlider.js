@@ -137,6 +137,7 @@ export default function BannerSlider() {
           <div
             key={`${src}-${i}`}
             className={`banner-slider__slide${isDesktop ? " banner-slider__slide--desktop" : " banner-slider__slide--mobile"}`}
+            style={{ position: "relative" }}  /* required by Next.js Image fill */
           >
             <Image
               src={src}
